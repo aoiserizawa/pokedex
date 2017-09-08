@@ -19,7 +19,7 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         
         collectionView?.register(HomePokemonCell.self, forCellWithReuseIdentifier: "pokemonCell")
         
-        
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

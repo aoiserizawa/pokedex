@@ -98,7 +98,7 @@ class BioViewController: UIViewController {
     
     func setUpBioStatus(){
         
-        let stackViewTop = UIStackView(arrangedSubviews: self.createLabels("Type", "Grass", "PokemonID:", "143", size: 14, font: "AvenirNext-Bold", special: true))
+        let stackViewTop = UIStackView(arrangedSubviews: self.createLabels("Type:", "Grass", "PokemonID:", "143", size: 14, font: "AvenirNext-Bold", special: true))
         stackViewTop.translatesAutoresizingMaskIntoConstraints = false
         stackViewTop.axis = .horizontal
         stackViewTop.spacing = 10
