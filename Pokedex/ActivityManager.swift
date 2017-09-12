@@ -13,7 +13,6 @@ struct ActivityManager {
     static var numberOfActivity = 0
     
     static func addActivity() {
-        print(numberOfActivity)
         if self.numberOfActivity > -1 {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
             self.numberOfActivity += 1

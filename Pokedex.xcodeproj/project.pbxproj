@@ -21,6 +21,7 @@
 		74082C091F57020100F4EB45 /* MovesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74082C081F57020100F4EB45 /* MovesViewController.swift */; };
 		74396F5E1F65E87600E6D39B /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74396F5D1F65E87600E6D39B /* Pokemon.swift */; };
 		74396F621F661B7800E6D39B /* ActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74396F611F661B7800E6D39B /* ActivityManager.swift */; };
+		74396F641F68670200E6D39B /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74396F631F68670200E6D39B /* APIManager.swift */; };
 		D89C7CABE90B1ED1B15D7F3E /* Pods_PokedexTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C6EC2EF57D39F2A611E0D58 /* Pods_PokedexTests.framework */; };
 		F79790BF550C98DA5591D1F4 /* Pods_PokedexUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E21AD07BEAA65928A762F18 /* Pods_PokedexUITests.framework */; };
 /* End PBXBuildFile section */
@@ -67,6 +68,7 @@
 		74082C081F57020100F4EB45 /* MovesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovesViewController.swift; sourceTree = "<group>"; };
 		74396F5D1F65E87600E6D39B /* Pokemon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 		74396F611F661B7800E6D39B /* ActivityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityManager.swift; sourceTree = "<group>"; };
+		74396F631F68670200E6D39B /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		8C6EC2EF57D39F2A611E0D58 /* Pods_PokedexTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PokedexTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ECE119D13CFCB743ACBFD58 /* Pods-PokedexUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokedexUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PokedexUITests/Pods-PokedexUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D70FD62837061D05AA368246 /* Pods_Pokedex.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pokedex.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -196,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				74396F611F661B7800E6D39B /* ActivityManager.swift */,
+				74396F631F68670200E6D39B /* APIManager.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -510,6 +513,7 @@
 				74396F621F661B7800E6D39B /* ActivityManager.swift in Sources */,
 				74396F5E1F65E87600E6D39B /* Pokemon.swift in Sources */,
 				74082BD21F533AF900F4EB45 /* HomeViewController.swift in Sources */,
+				74396F641F68670200E6D39B /* APIManager.swift in Sources */,
 				74082BD81F533AF900F4EB45 /* Pokedex.xcdatamodeld in Sources */,
 				74082BD01F533AF900F4EB45 /* AppDelegate.swift in Sources */,
 				74082C051F55FA7400F4EB45 /* DetailViewController.swift in Sources */,
