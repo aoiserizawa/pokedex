@@ -42,7 +42,6 @@ class BioViewController: UIViewController {
             make.left.equalTo(self.mainContainerView.snp.left).offset(10)
             make.height.equalTo(100)
             make.width.equalTo(100)
-            
         }
         
     }
@@ -56,13 +55,11 @@ class BioViewController: UIViewController {
         self.bioDescTextView.isEditable = false
         self.bioDescTextView.isScrollEnabled = false
         
-        
         self.bioDescTextView.snp.makeConstraints { (make) in
-            make.top.equalTo(self.mainContainerView.snp.top)
-            make.left.equalTo(self.imageView.snp.right).offset(10)
-            make.right.equalTo(self.mainContainerView.snp.right).offset(-10)
+            make.top.equalTo(self.mainContainerView.snp.top).offset(10)
+            make.left.equalTo(self.imageView.snp.right)
+            make.right.equalTo(self.mainContainerView.snp.right).offset(0)
             make.height.greaterThanOrEqualTo(120)
-//            make.bottom.equalTo(self.mainContainerView.snp.bottom)
             
         }
         
@@ -74,10 +71,11 @@ class BioViewController: UIViewController {
         self.scrollViewContainer.translatesAutoresizingMaskIntoConstraints = false
         
         self.scrollViewContainer.snp.makeConstraints { (make) in
-            make.top.equalTo(topLayoutGuide.snp.bottom)
-            make.left.equalTo(view)
-            make.right.equalTo(view)
-            make.bottom.equalTo(bottomLayoutGuide.snp.top)
+//            make.top.equalTo(topLayoutGuide.snp.bottom)
+//            make.left.equalTo(view)
+//            make.right.equalTo(view)
+//            make.bottom.equalTo(bottomLayoutGuide.snp.top)
+            make.edges.equalTo(view)
         }
         
     }
@@ -89,8 +87,8 @@ class BioViewController: UIViewController {
         self.mainContainerView.backgroundColor = UIColor.white
         
         self.mainContainerView.snp.makeConstraints { (make) in
-            make.width.equalTo(scrollViewContainer.snp.width)
-            make.edges.equalTo(scrollViewContainer.snp.edges)
+            make.width.equalTo(view.snp.width)
+            make.edges.equalTo(scrollViewContainer)
         }
         
     }
@@ -101,21 +99,21 @@ class BioViewController: UIViewController {
         let stackViewTop = UIStackView(arrangedSubviews: self.createLabels("Type:", "Grass", "PokemonID:", "143", size: 14, font: "AvenirNext-Bold", special: true))
         stackViewTop.translatesAutoresizingMaskIntoConstraints = false
         stackViewTop.axis = .horizontal
-        stackViewTop.spacing = 10
+//        stackViewTop.spacing = 10
         stackViewTop.distribution = .fillEqually
         stackViewTop.alignment = .center
         
         let stackViewMiddle = UIStackView(arrangedSubviews: self.createLabels("Height:", "4", "Base Attack:", "55", size: 11, font: "AvenirNext-Bold", special: false))
         stackViewMiddle.translatesAutoresizingMaskIntoConstraints = false
         stackViewMiddle.axis = .horizontal
-        stackViewMiddle.spacing = 10
+//        stackViewMiddle.spacing = 10
         stackViewMiddle.distribution = .fillEqually
         stackViewMiddle.alignment = .center
         
         let stackViewBottom = UIStackView(arrangedSubviews: self.createLabels("Weight:", "522", "Base Defense:", "65", size: 11, font: "AvenirNext-Bold", special: false))
         stackViewBottom.translatesAutoresizingMaskIntoConstraints = false
         stackViewBottom.axis = .horizontal
-        stackViewBottom.spacing = 10
+//        stackViewBottom.spacing = 10
         stackViewBottom.distribution = .fillEqually
         stackViewBottom.alignment = .center
         
@@ -126,7 +124,7 @@ class BioViewController: UIViewController {
         
         stackViewContainer.translatesAutoresizingMaskIntoConstraints = false
         stackViewContainer.axis = .vertical
-        stackViewContainer.spacing = 20
+        stackViewContainer.spacing = 10
         stackViewContainer.distribution = .fillProportionally
         stackViewContainer.alignment = .fill
         
@@ -134,7 +132,7 @@ class BioViewController: UIViewController {
         self.mainContainerView.addSubview(stackViewContainer)
         
         stackViewContainer.snp.makeConstraints { (make) in
-            make.top.equalTo(self.bioDescTextView.snp.bottom).offset(30)
+            make.top.equalTo(self.imageView.snp.bottom).offset(30)
             make.right.left.equalTo(self.mainContainerView).offset(20)
 //            make.bottom.equalTo(self.mainContainerView.snp.bottom)
         }
@@ -152,19 +150,19 @@ class BioViewController: UIViewController {
             if special == true {
                 if index == 1 || index % 2 == 0 {
                     labelAttribute.font = UIFont(name: font, size: CGFloat(size))
-                    print(label)
+//                    print(label)
                 }else{
                     let fontUnbold = font.components(separatedBy: "-")
-                    print(fontUnbold[0])
+//                    print(fontUnbold[0])
                     labelAttribute.font = UIFont(name: fontUnbold[0]+"-Regular", size: CGFloat(size))
                 }
             }else{
                 if index % 2 == 0 {
                     labelAttribute.font = UIFont(name: font, size: CGFloat(size))
-                    print(label)
+//                    print(label)
                 }else{
                     let fontUnbold = font.components(separatedBy: "-")
-                    print(fontUnbold[0])
+//                    print(fontUnbold[0])
                     labelAttribute.font = UIFont(name: fontUnbold[0]+"-Regular", size: CGFloat(size))
                 }
             }
