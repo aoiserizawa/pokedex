@@ -10,16 +10,14 @@ import UIKit
 
 class APIManager {
     
-    
-    var pokemonArray = [Pokemon]()
-    
-    
-    func fetchPokemon(pageNumber: Int, completion: @escaping (Bool, Any?, Error?)->()){            
+    func fetchPokemon(pageNumber: Int, completion: @escaping (Bool, Any?, Error?)->()){
+        print(pageNumber)
         guard let url = URL(string: "http://pokeapi.co/api/v2/pokemon/?offset=\(pageNumber)") else { return }
         
         let session = URLSession.shared
         ActivityManager.addActivity()
         session.dataTask(with: url) { (data, response, error) in
+            var pokemonArray = [Pokemon]()
             if response != nil{
                 ActivityManager.removeActivity()
             }
@@ -30,17 +28,19 @@ class APIManager {
                         if let results = dictionary["results"] as? [[String:AnyObject]]{
                             for result in results{
                                 if let url = result["url"]?.components(separatedBy: "/"), let name = result["name"] {
-                                    self.pokemonArray.append(Pokemon(name: name as! String, pokedexId: Int(url[6])!) )
-                                    completion(true, self.pokemonArray, nil)
-                                    self.pokemonArray.removeAll()
+                                    pokemonArray.append(Pokemon(name: name as! String, pokedexId: Int(url[6])!) )
+                                    
                                 }
                             }
+                            completion(true, pokemonArray, nil)
                         }
                     }
+                    
                 }catch{
                     completion(false, nil, error)
-                    self.pokemonArray.removeAll()
+                    
                 }
+
             }
             }.resume()
     }

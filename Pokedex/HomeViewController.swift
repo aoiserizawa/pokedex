@@ -76,7 +76,6 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
     
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.row == pokemonArray.count - 1 {
-            
             self.page += 20
             
             APIManager().fetchPokemon(pageNumber: self.page) { (success, data, error) in
