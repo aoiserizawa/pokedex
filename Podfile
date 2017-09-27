@@ -6,7 +6,7 @@ target 'Pokedex' do
   use_frameworks!
 
   # Pods for Pokedex
-  pod 'SnapKit', '~> 3.0'
+  pod 'SnapKit', '~> 4.0.0'
 
   target 'PokedexTests' do
     inherit! :search_paths

@@ -19,29 +19,29 @@ class APIManager {
         session.dataTask(with: url) { (data, response, error) in
             var pokemonArray = [Pokemon]()
             if response != nil{
-                ActivityManager.removeActivity()
-            }
-            if let data = data {
-                do{
-                    let json = try JSONSerialization.jsonObject(with: data, options: [])
-                    if let dictionary = json as? [String:AnyObject] {
-                        if let results = dictionary["results"] as? [[String:AnyObject]]{
-                            for result in results{
-                                if let url = result["url"]?.components(separatedBy: "/"), let name = result["name"] {
-                                    pokemonArray.append(Pokemon(name: name as! String, pokedexId: Int(url[6])!) )
-                                    
+                DispatchQueue.main.async {
+                    ActivityManager.removeActivity()
+                    
+                    if let data = data {
+                        do{
+                            let json = try JSONSerialization.jsonObject(with: data, options: [])
+                            if let dictionary = json as? [String:AnyObject] {
+                                if let results = dictionary["results"] as? [[String:AnyObject]]{
+                                    for result in results{
+                                        if let url = result["url"]?.components(separatedBy: "/"), let name = result["name"] {
+                                            pokemonArray.append(Pokemon(name: name as! String, pokedexId: Int(url[6])!) )                                            
+                                        }
+                                    }
+                                    completion(true, pokemonArray, nil)
                                 }
                             }
-                            completion(true, pokemonArray, nil)
+                        }catch{
+                            completion(false, nil, error)
                         }
                     }
-                    
-                }catch{
-                    completion(false, nil, error)
-                    
                 }
-
             }
+            
             }.resume()
     }
 }

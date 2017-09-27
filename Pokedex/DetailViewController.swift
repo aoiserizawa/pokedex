@@ -84,7 +84,7 @@ class DetailViewController: UIViewController {
         
     }
     
-    func switchTabs(_ sender: UISegmentedControl){
+    @objc func switchTabs(_ sender: UISegmentedControl){
         
         self.currentViewController!.view.removeFromSuperview()
         self.currentViewController!.removeFromParentViewController()

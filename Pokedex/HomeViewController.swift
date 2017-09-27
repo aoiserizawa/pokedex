@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class HomeViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
@@ -25,11 +26,8 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 
         APIManager().fetchPokemon(pageNumber: 0) { (success, data, error) in
-            DispatchQueue.main.async {
-                self.pokemonArray = data as! [Pokemon]
-                self.collectionView?.reloadData()
-            }
-            
+            self.pokemonArray = data as! [Pokemon]
+            self.collectionView?.reloadData()
         }
         
     }
@@ -50,7 +48,7 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         cell.layer.cornerRadius = 5
         cell.layer.masksToBounds = true
         cell.nameLabel.text = pokemonArray[indexPath.row].name
-        
+        cell.pokemonImageView.image = UIImage(named: String(pokemonArray[indexPath.row].pokedexId))
         return cell
     }
     
@@ -116,6 +114,13 @@ class HomePokemonCell: UICollectionViewCell {
         return label
     }()
     
+    var pokemonImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "1")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+       return imageView
+    }()
+    
     func setUpViews(){
         
         addSubview(footerView)
@@ -136,6 +141,15 @@ class HomePokemonCell: UICollectionViewCell {
         nameConstraints.append(contentsOf: [nameXConstraint, nameYConstraint])
         
         NSLayoutConstraint.activate(nameConstraints)
+        
+        addSubview(pokemonImageView)
+        
+        pokemonImageView.snp.makeConstraints { (make) in
+            make.top.equalTo(0)
+            make.left.equalTo(0)
+            make.right.equalTo(0)
+            make.bottom.equalTo(footerView.snp.top)
+        }
         
     }
     
