@@ -25,13 +25,11 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 
-        APIManager().fetchPokemon(pageNumber: 0) { (success, data, error) in
-            self.pokemonArray = data as! [Pokemon]
+        APIManager().fetchPokemon(pageNumber: 0).onSuccess { (pokemons) in
+            self.pokemonArray = pokemons
             self.collectionView?.reloadData()
-        }
-        
+        }        
     }
-    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return pokemonArray.count
     }
@@ -76,13 +74,10 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         if indexPath.row == pokemonArray.count - 1 {
             self.page += 20
             
-            APIManager().fetchPokemon(pageNumber: self.page) { (success, data, error) in
-                DispatchQueue.main.async {
-                    self.pokemonArray.append(contentsOf: data as! [Pokemon])
-                    self.collectionView?.reloadData()
-                }
-                
-            }
+            APIManager().fetchPokemon(pageNumber: self.page).onSuccess(callback: { (pokemons) in
+                self.pokemonArray.append(contentsOf: pokemons)
+                self.collectionView?.reloadData()
+            })
         }
     }
     
